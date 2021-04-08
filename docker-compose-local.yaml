@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  pg:
+    image: postgres:13
+    container_name: pg
+    environment:
+      - POSTGRES_USER=perfume_db_ejrrnypihhwnyb
+      - POSTGRES_PASSWORD=ca68b6702bd66c677122f5b61b9bd12107b87eedd5b81bcfc2ecce8203f257e4
+    volumes:
+      - ~/pg-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  barman:
+    image: barman
+    container_name: barman
+    volumes:
+      - ~/barman/barman.conf:/etc/barman.conf
+      - ~/barman/barman.d/streaming.conf:/etc/barman.d/streaming.conf
+      - ~/barman/.pgpass:/var/lib/barman/.pgpass
