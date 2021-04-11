@@ -14,5 +14,5 @@ services:
     image: barman
     container_name: barman
     volumes:
-      - ~/barman/barman.conf:/etc/barman.conf
-      - ~/barman/barman.d/streaming.conf:/etc/barman.d/streaming.conf
+      - ~/pg-data:/var/lib/postgresql/data
+      - ~/barman-data:/var/lib/barman
